@@ -29,57 +29,80 @@ class LinkedList():
 
     def insert(self, val):
         """ insert the value 'val' at the head of the list """
-        if val is None:
-            return
 
         if val is self:
-            """
-            This is a simple check to eliminate the most obvious recursion
-            but to truly detect recursion would require at least an O(n)
-            search on every insert().
+            # This is a simple check to eliminate the most obvious recursion
+            # but to truly detect recursion would require at least an O(n)
+            # search on every insert().
 
-            if recursion is built into the linked list a runtime
-            error will result when __repr__ is called.
-            """
+            # if recursion is built into the linked list a runtime
+            # error will result when __repr__ is called.
             return
+
         self.head = Node(val, self.head)
         return
 
+    def span_link(self, prev, curlink):
+        if prev is None:
+            self.head = curlink
+        else:
+            prev.link = curlink
+        return curlink
+
     def append(self, val):
         """ append the value 'val' at the end of the list """
-        if val is None:
-            return
 
         if val is self:
-            """
-            This is a simple check to eliminate the recursion when the
-            val in the append() is the list
-            """
+            # This is a simple check to eliminate the recursion when the
+            # val in the append() is the list
             return
+
         prev = None
         for cur in IterNode(self.head):
             if cur is val:
-                """
-                Since this walks to the end of the list anyway
-                check if a recursion is being created by append()
-                """
+                # Since this walks to the end of the list anyway
+                # check if a recursion is being created by append()
                 return
             prev = cur
 
-        new_node = Node(val)
-        if prev is None:
-            self.head = new_node
-        else:
-            prev.link = new_node
+        return self.span_link(prev, Node(val))
 
     def pop(self):
         """ pop the first value off the head of the list and return it. """
         if self.head is None:
-            """ list is empty """
-            return None
+            # list is empty
+            raise ValueError("pop() on empty Stack")
+
         val = self.head.val
         self.head = self.head.link
         return val
+
+    def search(self, val):
+        """ return the node containing 'val' in the list, if present, else None """
+        for cur in IterNode(self.head):
+            if cur.val == val:
+                return cur
+
+        return None
+
+    def remove_item(self, item, isNode=False):
+        prev = None
+
+        for cur in IterNode(self.head):
+            if cur == item if isNode else cur.val == item:
+                return self.span_link(prev, cur.link)
+            prev = cur
+
+        # could just return, but spec says it must be in list
+        raise ValueError("item to be removed not in list")
+
+    def remove_val(self, val):
+        """ remove the given value from the list, wherever it might be (value must be an item in the list """
+        return self.remove_item(val, False)
+
+    def remove(self, node):
+        """ remove the given node from the list, wherever it might be (node must be an item in the list """
+        return self.remove_item(node, True)
 
     def size(self):
         """ return the length of the list """
@@ -87,42 +110,6 @@ class LinkedList():
         for cur in IterNode(self.head):
             sz += 1
         return sz
-
-    def search(self, val):
-        """ return the node containing 'val' in the list, if present, else None """
-        for cur in IterNode(self.head):
-            if cur.val == val:
-                return cur
-        return None
-
-    def span_link(self, prev, cur):
-        if prev is None:
-            self.head = cur.link
-        else:
-            prev.link = cur.link
-        return cur.link
-
-    def remove_val(self, val):
-        """ remove the given value from the list, wherever it might be (value must be an item in the list """
-        prev = None
-
-        for cur in IterNode(self.head):
-            if cur.val == val:
-                return self.span_link(prev, cur)
-            prev = cur
-        """ could just return, but spec says it must be in list """
-        raise ValueError
-
-    def remove(self, node):
-        """ remove the given node from the list, wherever it might be (node must be an item in the list """
-        prev = None
-
-        for cur in IterNode(self.head):
-            if cur == node:
-                return self.span_link(prev, cur)
-            prev = cur
-        """ could just return, but spec says it must be in list """
-        raise ValueError
 
     def __repr__(self):
         """ display the list represented as a Python tuple literal: "(12, 'sam', 37, 'tango')"

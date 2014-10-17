@@ -58,10 +58,10 @@ class MyFuncTestCase(unittest.TestCase):
         self.assertEqual(Node0.val, 0)
         self.assertIsNone(Node0.link)
 
-        # ensure adding 'None' adds nothing
+        # ensure adding 'None' adds something
         sz1 = l1.size()
         l1.insert(None)
-        self.assertEqual(sz1, l1.size())
+        self.assertEqual(sz1+1, l1.size())
 
         # ensure adding recursively adds nothing
         sz1 = l1.size()
@@ -88,10 +88,10 @@ class MyFuncTestCase(unittest.TestCase):
         self.assertEqual(Node1.val, 1)
         self.assertIsNone(Node1.link)
 
-        # ensure adding 'None' adds nothing
+        # ensure adding 'None' adds something
         sz1 = l1.size()
         l1.append(None)
-        self.assertEqual(sz1, l1.size())
+        self.assertEqual(sz1+1, l1.size())
 
         # ensure adding recursively adds nothing
         sz1 = l1.size()
@@ -114,9 +114,9 @@ class MyFuncTestCase(unittest.TestCase):
         self.assertEqual(l1.size(), 0)
         self.assertEqual(Val0, 0)
 
-        # if the list is empty and you pop, return None
-        ValNone = l1.pop()
-        self.assertIsNone(ValNone)
+        # if the list is empty and you pop, raise ValueError
+        with self.assertRaises(ValueError):
+            ValNone = l1.pop()
 
     def test_LinkedList_size(self):
         l1 = LinkedList()
