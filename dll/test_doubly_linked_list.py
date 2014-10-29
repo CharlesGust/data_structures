@@ -9,7 +9,8 @@ can be run with py.test
 import pytest  # used for the exception testing
 import unittest
 
-from doubly_linked_list import DNode, IterDNode, DoublyLinkedList
+from doubly_linked_list\
+    import DNode, IterDNode, IterDNodeReverse, DoublyLinkedList
 
 
 class MyFuncTestCase(unittest.TestCase):
@@ -17,6 +18,7 @@ class MyFuncTestCase(unittest.TestCase):
         DNode0 = DNode(0)
         self.assertEqual(DNode0.val, 0)
         self.assertIsNone(DNode0.link)
+        self.assertIsNone(DNode0.link2)
 
     def test_IterDNode(self):
         i1 = IterDNode(None)
@@ -34,9 +36,26 @@ class MyFuncTestCase(unittest.TestCase):
         with self.assertRaises(StopIteration):
             i2.next()
 
+    def test_IterDNodeReverse(self):
+        i1 = IterDNodeReverse(None)
+        self.assertIsNone(i1.cur)
+
+        with self.assertRaises(StopIteration):
+            i1.next()
+
+        Node0 = DNode(0)
+        i2 = IterDNode(Node0)
+        self.assertIsNotNone(i2.cur)
+        Node1 = i2.next()
+        self.assertEqual(Node0, Node1)
+
+        with self.assertRaises(StopIteration):
+            i2.next()
+
     def test_DoublyLinkedList___init__(self):
         l1 = DoublyLinkedList()
         self.assertIsNone(l1.head)
+        self.assertIsNone(l1.tail)
 
     def test_DoublyLinkedList_insert(self):
         l1 = DoublyLinkedList()
@@ -46,17 +65,21 @@ class MyFuncTestCase(unittest.TestCase):
         Node0 = l1.head
         self.assertEqual(Node0.val, 0)
         self.assertIsNone(Node0.link)
+        self.assertIsNone(Node0.link2)
 
         # ensure Node(1) added to front of list
         l1.insert(1)
         Node1 = l1.head
         self.assertEqual(Node1.val, 1)
         self.assertIsNotNone(Node1.link)
+        self.assertEqual(Node1.link, Node0)
+        self.assertEqual(Node0.link2, Node1)
 
         # ensure Node(0) is next in list
         Node0 = Node1.link
         self.assertEqual(Node0.val, 0)
         self.assertIsNone(Node0.link)
+        self.assertIsNotNone(Node0.link2)
 
         # ensure adding 'None' adds something
         sz1 = l1.size()
@@ -74,6 +97,8 @@ class MyFuncTestCase(unittest.TestCase):
 
         # ensure Node(0) added to list
         Node0 = l1.head
+        self.assertIsNotNone(l1.head)
+        self.assertIsNotNone(l1.tail)
         self.assertEqual(Node0.val, 0)
         self.assertIsNone(Node0.link)
 

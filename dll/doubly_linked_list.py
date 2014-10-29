@@ -15,7 +15,19 @@ class IterDNode(IterNode):
 
 
 class IterDNodeReverse(IterNode):
-    pass
+    def __init__(self, tail):
+        self.cur = tail
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        if self.cur is not None:
+            ret = self.cur
+            self.cur = self.cur.link2
+            return ret
+        else:
+            raise StopIteration
 
 
 class DoublyLinkedList(LinkedList):
