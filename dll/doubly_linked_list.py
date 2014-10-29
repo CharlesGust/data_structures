@@ -81,10 +81,12 @@ class DoublyLinkedList(LinkedList):
         next_dnode = self.head.link
         if next_dnode is not None:
             next_dnode.link2 = None
+        else:
+            self.tail = None
         self.head = next_dnode
         return val
 
-    def shift(self, val):
+    def shift(self):
         """ pop the first value off the head of the list and return it. """
         if self.tail is None:
             # list is empty
@@ -94,6 +96,8 @@ class DoublyLinkedList(LinkedList):
         prev_dnode = self.tail.link2
         if prev_dnode is not None:
             prev_dnode.link = None
+        else:
+            self.head = None
         self.tail = prev_dnode
         return val
 
