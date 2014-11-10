@@ -1,7 +1,5 @@
-import sys
 
-sys.path.insert(0, "../dll")
-from doubly_linked_list\
+from ..dll.doubly_linked_list\
     import DNode, IterDNode, IterDNodeReverse, DoublyLinkedList
 
 
