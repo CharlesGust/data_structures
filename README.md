@@ -2,6 +2,9 @@
 #===============
 This repository holds sample code for a number of classic data structures implemented in Python
 
+##Continuous Integration Status
+[![Build Status](https://travis-ci.org/CharlesGust/data_structures.svg?branch=master)](https://travis-ci.org/CharlesGust/data_structures)
+
 ##Collaborations
 On the hashtable implementation, Ben Friedland helped convince me to use native Python
 lists instead of the "Bucket" object I had created that I thought was a requirement of
