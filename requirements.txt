@@ -1,0 +1,9 @@
+argparse==1.2.1
+extras==0.0.3
+fuzzywuzzy==0.3.3
+lettuce==0.2.20
+python-mimeparse==0.1.4
+python-subunit==0.0.21
+sure==1.2.7
+testtools==1.1.0
+wsgiref==0.1.2

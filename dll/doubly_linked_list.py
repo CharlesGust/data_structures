@@ -1,7 +1,9 @@
-import sys
+#
+# Implement a doubly linked list
+#
 
-sys.path.insert(0, "../linked_list")
-from linked_list import Node, IterNode, LinkedList
+from ..linked_list.linked_list import Node, IterNode, LinkedList
+
 
 
 class DNode(Node):
