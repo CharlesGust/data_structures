@@ -1,27 +1,9 @@
 #
 # Implement a doubly linked list
 #
-# This is supposed to build upon the linked_list implementation
-#  however, as near as I can understand PEP366, PEP328 and numerous
-#  online questions and explanations regarding relative imports
-#  there is virtually no way to do it. The relative path alterations
-#  suggested at some web sites (and partly commented out immediately
-#  below) fail to work on Travis CI, which probably has a very different
-#  of the system path.
-#
-# Therefore, it is easier to just go to the operating system and do
-#       cp ../linked_list/linked_list.py .
-#  so that linked_list may be imported from the current directory.
-#
-# The following two lines are the most recommended online
-# import sys
-# sys.path.insert(0, "../linked_list")
-#
-# This one should work, but fails on Travis CI after working locally
+
 from ..linked_list.linked_list import Node, IterNode, LinkedList
-#
-# Is linked_list.py in the current directory? Use line:
-# from linked_list import Node, IterNode, LinkedList
+
 
 
 class DNode(Node):

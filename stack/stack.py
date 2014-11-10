@@ -1,7 +1,7 @@
 import sys
 
 sys.path.insert(0, "../linked_list")
-from linked_list import LinkedList
+from ..linked_list.linked_list import LinkedList
 
 class Stack(LinkedList):
     def push(self, val):
