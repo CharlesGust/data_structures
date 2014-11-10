@@ -1,7 +1,7 @@
-import sys
+# import sys
 
-sys.path.insert(0, "../linked_list")
-from linked_list import Node, IterNode, LinkedList
+# sys.path.insert(0, "../linked_list")
+from ..linked_list.linked_list import Node, IterNode, LinkedList
 
 
 class DNode(Node):
