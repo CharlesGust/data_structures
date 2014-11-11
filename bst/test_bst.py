@@ -462,6 +462,72 @@ class BinarySearchTreeTestCases(unittest.TestCase):
     #     self.assertEqual(bst10.size(), 0)
     #     self.assertEqual(bst10.depth(), 0)
 
+    # def test_inorder(self):
+    #     bst1 = BinarySearchTree()
+    #     bst2 = BinarySearchTree()
+    #     bst3 = BinarySearchTree()
+    #     bst4 = BinarySearchTree()
+    #     bst5 = BinarySearchTree()
+    #     bst6 = BinarySearchTree()
+
+    #     bst1.insert(0)
+    #     bst1.insert(1)
+    #     bst1.insert(2)
+
+    #     for x in bst1.in_order():
+    #         self.assertGreaterEqual(x, 0)
+    #         self.assertLessEqual(x, 2)
+
+        # bst2.insert(1)
+        # bst2.insert(2)
+        # bst2.insert(0)
+
+        # self.assertTrue(bst2.contains(0))
+        # self.assertTrue(bst2.contains(1))
+        # self.assertTrue(bst2.contains(2))
+
+        # bst3.insert(2)
+        # bst3.insert(0)
+        # bst3.insert(1)
+
+        # self.assertTrue(bst3.contains(0))
+        # self.assertTrue(bst3.contains(1))
+        # self.assertTrue(bst3.contains(2))
+
+        # bst4.insert(2)
+        # bst4.insert(1)
+        # bst4.insert(0)
+
+        # self.assertTrue(bst4.contains(0))
+        # self.assertTrue(bst4.contains(1))
+        # self.assertTrue(bst4.contains(2))
+
+        # bst5.insert(0)
+        # bst5.insert(2)
+        # bst5.insert(1)
+
+        # self.assertTrue(bst5.contains(0))
+        # self.assertTrue(bst5.contains(1))
+        # self.assertTrue(bst5.contains(2))
+
+        # bst6.insert(1)
+        # bst6.insert(0)
+        # bst6.insert(2)
+
+        # self.assertTrue(bst6.contains(0))
+        # self.assertTrue(bst6.contains(1))
+        # self.assertTrue(bst6.contains(2))
+        # pass
+
+    def test_pre_order(self):
+        pass
+
+    def test_post_order(self):
+        pass
+
+    def test_breadth_first(self):
+        pass
+
 
 if __name__ == "__main__":
     unittest.main()

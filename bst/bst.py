@@ -11,6 +11,8 @@
 # doubly_linked_list.py
 #from ..dll.doubly_linked_list import DNode
 
+from Queue import Queue
+
 # BEGIN linked_list.py
 class Node():
     def __init__(self, val, link=None):
@@ -241,5 +243,47 @@ class BinarySearchTree():
                                                     current.right)
         return None
 
+    def _in_order(self, bnode):
+        if bnode is None:
+            return
+        self._in_order(bnode.left)
+        yield bnode.val
+        self._in_order(bnode.right)
+
+    def in_order(self):
+        yield self._in_order(self.head)
+
+    def _pre_order(self, bnode):
+        if bnode is None:
+            return
+        yield bnode.val
+        self._pre_order(bnode.left)
+        self._pre_order(bnode.right)
+
+    def pre_order(self):
+        yield self._pre_order(self.head)
+
+    def _post_order(self, bnode):
+        if bnode is None:
+            return
+        self._post_order(bnode.left)
+        self._post_order(bnode.right)
+        yield bnode.val
+
+    def post_order(self):
+        yield self._post_order(self.head)
+
+    def breadth_first(self):
+        q1 = Queue()
+
+        q1.put(self.head)
+
+        while not q1.empty():
+            dnode = q1.get()
+            yield dnode.val
+            if dnode.left is not None:
+                q1.put(dnode.left)
+            if dnode.right is not None:
+                q1.put(dnode.right)
 
 
