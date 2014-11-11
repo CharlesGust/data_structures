@@ -1,13 +1,19 @@
 #!/usr/bin/env python
 
-def insert_mids(tree, span):
-    mid = int(span/2)
-    if mid == 0:
+def insert_mid(tree, num, step):
+    tree.insert(num)
+    if step == 0:
         return
-    else:
-        tree.insert(mid)
-        insert_mids(mid + (mid/2))
-        insert_mids(mid/2)
+    print "inserting %d" % num
+
+    insert_mid(tree, num+step, int(step/2))
+
+    insert_mid(tree, num-step, int(step/2))
+
+
+def insert_span(tree, span):
+    insert_mid(tree, span/2, span/4)
+
 
 if __name__=="__main__":
     # worst case: inserting values in increasing or decreasing order
@@ -28,6 +34,6 @@ if __name__=="__main__":
     #  of top section and bottom section.
     bst3 = BinarySearchTree()
 
-    insert_mids(bst3, 256)
+    insert_span(bst3, 256)
 
     print "Best Case: inserting at mids has depth %d" % bst3.depth()

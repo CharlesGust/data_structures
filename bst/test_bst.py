@@ -309,6 +309,159 @@ class BinarySearchTreeTestCases(unittest.TestCase):
 
         self.assertEqual(bst6.balance(),0)
 
+    def test_delete_simple(self):
+        bst1 = BinarySearchTree()
+        bst2 = BinarySearchTree()
+        bst3 = BinarySearchTree()
+        bst4 = BinarySearchTree()
+        bst5 = BinarySearchTree()
+        bst6 = BinarySearchTree()
+
+        bst1.insert(0)
+        bst1.insert(1)
+        bst1.insert(2)
+
+        bst1.delete(1)
+        self.assertEqual(bst1.size(),2)
+        bst1.delete(0)
+        self.assertEqual(bst1.size(),1)
+        bst1.delete(2)
+        self.assertEqual(bst1.size(),0)
+
+        bst2.insert(1)
+        bst2.insert(2)
+        bst2.insert(0)
+
+        bst2.delete(0)
+        self.assertEqual(bst2.size(),2)
+        bst2.delete(2)
+        self.assertEqual(bst2.size(),1)
+        bst2.delete(1)
+        self.assertEqual(bst2.size(),0)
+
+        bst3.insert(2)
+        bst3.insert(0)
+        bst3.insert(1)
+
+        bst3.delete(2)
+        self.assertEqual(bst3.size(),2)
+        bst3.delete(1)
+        self.assertEqual(bst3.size(),1)
+        bst3.delete(0)
+        self.assertEqual(bst3.size(),0)
+
+        bst4.insert(2)
+        bst4.insert(1)
+        bst4.insert(0)
+
+        bst4.delete(2)
+        self.assertEqual(bst4.size(),2)
+        bst4.delete(0)
+        self.assertEqual(bst4.size(),1)
+        bst4.delete(1)
+        self.assertEqual(bst4.size(),0)
+
+        bst5.insert(0)
+        bst5.insert(2)
+        bst5.insert(1)
+
+        bst5.delete(1)
+        self.assertEqual(bst5.size(),2)
+        bst5.delete(2)
+        self.assertEqual(bst5.size(),1)
+        bst5.delete(0)
+        self.assertEqual(bst5.size(),0)
+
+        bst6.insert(1)
+        bst6.insert(0)
+        bst6.insert(2)
+
+        bst6.delete(0)
+        self.assertEqual(bst6.size(),2)
+        bst6.delete(1)
+        self.assertEqual(bst6.size(),1)
+        bst6.delete(2)
+        self.assertEqual(bst6.size(),0)
+
+    def test_delete_complex(self):
+        for size in [1, 2, 3, 4, 7, 8, 15, 26, 100, 417, 5694]:
+            bst = BinarySearchTree()
+
+            for i in xrange(size):
+                bst.insert(i)
+
+            self.assertEqual(bst.size(), size)
+
+            for i in xrange(size):
+                bst.delete(i)
+
+            self.assertEqual(bst.size(), 0)
+
+    def test_WorstCase_insert(self):
+        bst1 = BinarySearchTree()
+        bst2 = BinarySearchTree()
+
+        for i in xrange(100):
+            bst1.insert(i)
+            bst2.insert(100-i)
+
+        self.assertEqual(bst1.depth(), 100)
+        self.assertEqual(bst2.depth(), 100)
+
+    # def test_perfect_insert(self):
+    #     def insert_mids(tree, span):
+    #         mid = int(span/2)
+    #         if mid == 0:
+    #             return
+    #         else:
+    #             tree.insert(mid)
+    #             insert_mids(tree, mid + (mid/2))
+    #             insert_mids(tree, mid/2)
+
+    #     bst2 = BinarySearchTree()
+    #     insert_mids(bst2, 4)
+    #     self.assertEqual(bst2.depth(), 2)
+
+    #     bst4 = BinarySearchTree()
+    #     insert_mids(bst4, 16)
+    #     self.assertEqual(bst4.depth(), 4)
+
+    #     bst6 = BinarySearchTree()
+    #     insert_mids(bst6, 64)
+    #     #self.assertEqual(bst6.depth(), 6)
+
+    #     bst8 = BinarySearchTree()
+    #     insert_mids(bst8, 256)
+    #     #self.assertEqual(bst8.depth(), 8)
+
+    #     bst10 = BinarySearchTree()
+    #     insert_mids(bst10, 1024)
+    #     #self.assertEqual(bst10.depth(), 10)
+
+    #     for i in xrange(4):
+    #         bst2.delete(i)
+
+    #     for i in xrange(64):
+    #         bst6.delete(i)
+
+    #     for i in xrange(256):
+    #         bst8.delete(i)
+
+    #     for i in xrange(1024):
+    #         bst10.delete(i)
+
+    #     self.assertEqual(bst2.size(), 0)
+    #     self.assertEqual(bst2.depth(), 0)
+
+    #     self.assertEqual(bst6.size(), 0)
+    #     self.assertEqual(bst6.depth(), 0)
+
+    #     self.assertEqual(bst8.size(), 0)
+    #     self.assertEqual(bst8.depth(), 0)
+
+    #     self.assertEqual(bst10.size(), 0)
+    #     self.assertEqual(bst10.depth(), 0)
+
 
 if __name__ == "__main__":
     unittest.main()
