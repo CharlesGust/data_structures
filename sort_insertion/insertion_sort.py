@@ -17,7 +17,25 @@ import timeit
 #  including any sources and collaborations you used in creating it.
 
 def sort(unsorted):
-    pass
+    """ insertion sort of unsorted array """
+
+    # if the list is zero or one element, it is already sorted
+    if len(unsorted) <= 1:
+        return unsorted
+
+    for n in xrange(1, len(unsorted)):
+        # pick the nth element, and if it's value is less than any of the
+        #  (already sorted) values in front of it, move it to the front
+        for test_index in xrange(n, 1, -1):
+            if unsorted[test_index] < unsorted[test_index-1]:
+                val = unsorted[test_index-1]
+                unsorted[test_index] = unsorted[test_index-1]
+                unsorted[test_index-1] = val
+            else:
+                break
+
+    # unsorted array is now sorted (was done in place with swaps)
+    return unsorted
 
 if __name__=="__main__":
-
+    print timeit.timeit(sort([i for i in xrange(10000, 0, -1)]))
