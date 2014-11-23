@@ -12,6 +12,7 @@
 #from ..dll.doubly_linked_list import DNode
 
 from Queue import Queue
+import random
 
 # BEGIN linked_list.py
 class Node():
@@ -50,6 +51,33 @@ class BNode(DNode):
         if val is not None:
             DNode.__init__(self, val, link=left, link2=right)
 
+    def get_dot(self):
+        """return the tree with root 'self' as a dot graph for visualization"""
+        return "digraph G{\n%s}" % ("" if self.val is None else (
+            "\t%s;\n%s\n" % (
+                self.val,
+                "\n".join(self._get_dot())
+            )
+        ))
+
+    def _get_dot(self):
+        """recursively prepare a dot graph entry for this node."""
+        if self.left is not None:
+            yield "\t%s -> %s;" % (self.val, self.left.val)
+            for i in self.left._get_dot():
+                yield i
+        elif self.right is not None:
+            r = random.randint(0, 1e9)
+            yield "\tnull%s [shape=point];" % r
+            yield "\t%s -> null%s;" % (self.val, r)
+        if self.right is not None:
+            yield "\t%s -> %s;" % (self.val, self.right.val)
+            for i in self.right._get_dot():
+                yield i
+        elif self.left is not None:
+            r = random.randint(0, 1e9)
+            yield "\tnull%s [shape=point];" % r
+            yield "\t%s -> null%s;" % (self.val, r)
 
 class BinarySearchTree():
     def __init__(self):
@@ -93,6 +121,8 @@ class BinarySearchTree():
 
         self.nodeCount += 1
         return
+
+
 
     def contains(self, val):
         if self.head is None:
