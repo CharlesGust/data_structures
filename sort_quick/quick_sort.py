@@ -24,8 +24,15 @@ import timeit
 
 
 def quicksort_pivot(n):
-    """ return the index of the element to pivot around with list of length n """
+    """ return index of the element to pivot around with list of length n """
     return int(n/2)
+
+
+def swap_array_elements(arr, i1, i2):
+    temp = arr[i1]
+    arr[i1] = arr[i2]
+    arr[i2] = temp
+
 
 def partition(unsorted, begin, end):
     """ return index where the pivot value was placed """
@@ -34,26 +41,20 @@ def partition(unsorted, begin, end):
 
     # swap values at pivot_index and end - the end is a temporary
     #  holder for the pivot
-    temp = unsorted[pivot_index];
-    unsorted[pivot_index] = unsorted[end]
-    unsorted[end] = temp
+    swap_array_elements(unsorted, pivot_index, end)
 
     # find out where to place the end value
     ripple_index = begin
     for i in xrange(begin, end):
         if unsorted[i] < pivot_value:
             # swap values at current index and ripple_index
-            temp = unsorted[i]
-            unsorted[i] = unsorted[ripple_index]
-            unsorted[ripple_index] = temp
-
+            swap_array_elements(unsorted, i, ripple_index)
             ripple_index += 1
 
     # now retrieve the pivot value from the end and swap
     #  it with where the ripple found
-    temp = unsorted[ripple_index]
-    unsorted[ripple_index] = unsorted[end]
-    unsorted[end] = temp
+    swap_array_elements(unsorted, ripple_index, end)
+
     return ripple_index
 
 
@@ -76,14 +77,20 @@ def sort(unsorted):
 
 
 def time_one(count, elementtext, xrangetext):
-    count_text = str(count)
-    timeitstr = 'arr=['+elementtext+' for i in xrange('+xrangetext+')]; sort(arr)'
-    result = timeit.timeit(timeitstr, setup="from __main__ import sort; import random")
-    print "Quick sort of {0} elements from {1} of xrange({2}) takes {3} seconds".format(
-        count, elementtext, xrangetext, result)
+
+    timeitstr =\
+        'arr=['+elementtext+' for i in xrange('+xrangetext+')]; sort(arr)'
+
+    result = timeit.timeit(
+        timeitstr,
+        setup="from __main__ import sort; import random"
+        )
+
+    print "Quick sort of {0} elements from {1} of xrange({2}) takes {3} seconds"\
+        .format(count, elementtext, xrangetext, result)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
 
     for x in [2, 5, 10]:
         time_one(x, 'i', '0,{0}'.format(x))
