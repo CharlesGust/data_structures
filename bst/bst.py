@@ -283,7 +283,7 @@ class BinarySearchTree():
         self._in_order(bnode.right)
 
     def in_order(self):
-        yield self._in_order(self.head)
+        return self._in_order(self.head)
 
     def _pre_order(self, bnode):
         if bnode is None:
@@ -293,7 +293,7 @@ class BinarySearchTree():
         self._pre_order(bnode.right)
 
     def pre_order(self):
-        yield self._pre_order(self.head)
+        return self._pre_order(self.head)
 
     def _post_order(self, bnode):
         if bnode is None:
@@ -303,7 +303,7 @@ class BinarySearchTree():
         yield bnode.val
 
     def post_order(self):
-        yield self._post_order(self.head)
+        return self._post_order(self.head)
 
     def breadth_first(self):
         q1 = Queue()
