@@ -11,6 +11,7 @@ import unittest
 
 from bst import BNode, BinarySearchTree
 
+
 class BNodeTestCases(unittest.TestCase):
     def test_primitives(self):
         # construct a tree using BinarySearchTree primitives
@@ -41,6 +42,7 @@ class BNodeTestCases(unittest.TestCase):
         n2.right = n3
         nn1 = BNode(-1, None, None)
         n0.left = nn1
+
 
 class BinarySearchTreeTestCases(unittest.TestCase):
     def test___init__(self):
@@ -79,7 +81,6 @@ class BinarySearchTreeTestCases(unittest.TestCase):
             self.assertEqual(bst1.head.right.right.val, 2)
             self.assertIsNone(bst1.head.right.right.left)
             self.assertIsNone(bst1.head.right.right.right)
-
 
             bst2.insert(1)
             bst2.insert(2)
@@ -233,37 +234,37 @@ class BinarySearchTreeTestCases(unittest.TestCase):
         bst1.insert(1)
         bst1.insert(2)
 
-        self.assertEqual(bst1.depth(),3)
+        self.assertEqual(bst1.depth(), 3)
 
         bst2.insert(1)
         bst2.insert(2)
         bst2.insert(0)
 
-        self.assertEqual(bst2.depth(),2)
+        self.assertEqual(bst2.depth(), 2)
 
         bst3.insert(2)
         bst3.insert(0)
         bst3.insert(1)
 
-        self.assertEqual(bst3.depth(),3)
+        self.assertEqual(bst3.depth(), 3)
 
         bst4.insert(2)
         bst4.insert(1)
         bst4.insert(0)
 
-        self.assertEqual(bst4.depth(),3)
+        self.assertEqual(bst4.depth(), 3)
 
         bst5.insert(0)
         bst5.insert(2)
         bst5.insert(1)
 
-        self.assertEqual(bst5.depth(),3)
+        self.assertEqual(bst5.depth(), 3)
 
         bst6.insert(1)
         bst6.insert(0)
         bst6.insert(2)
 
-        self.assertEqual(bst6.depth(),2)
+        self.assertEqual(bst6.depth(), 2)
 
     def test_balance_nobalance(self):
         bst1 = BinarySearchTree()
@@ -277,37 +278,37 @@ class BinarySearchTreeTestCases(unittest.TestCase):
         bst1.insert(1)
         bst1.insert(2)
 
-        self.assertEqual(bst1.balance(),2)
+        self.assertEqual(bst1.balance(), 2)
 
         bst2.insert(1)
         bst2.insert(2)
         bst2.insert(0)
 
-        self.assertEqual(bst2.balance(),0)
+        self.assertEqual(bst2.balance(), 0)
 
         bst3.insert(2)
         bst3.insert(0)
         bst3.insert(1)
 
-        self.assertEqual(bst3.balance(),-2)
+        self.assertEqual(bst3.balance(), -2)
 
         bst4.insert(2)
         bst4.insert(1)
         bst4.insert(0)
 
-        self.assertEqual(bst4.balance(),-2)
+        self.assertEqual(bst4.balance(), -2)
 
         bst5.insert(0)
         bst5.insert(2)
         bst5.insert(1)
 
-        self.assertEqual(bst5.balance(),2)
+        self.assertEqual(bst5.balance(), 2)
 
         bst6.insert(1)
         bst6.insert(0)
         bst6.insert(2)
 
-        self.assertEqual(bst6.balance(),0)
+        self.assertEqual(bst6.balance(), 0)
 
     def test_delete_simple(self):
         bst1 = BinarySearchTree()
@@ -322,66 +323,66 @@ class BinarySearchTreeTestCases(unittest.TestCase):
         bst1.insert(2)
 
         bst1.delete(1)
-        self.assertEqual(bst1.size(),2)
+        self.assertEqual(bst1.size(), 2)
         bst1.delete(0)
-        self.assertEqual(bst1.size(),1)
+        self.assertEqual(bst1.size(), 1)
         bst1.delete(2)
-        self.assertEqual(bst1.size(),0)
+        self.assertEqual(bst1.size(), 0)
 
         bst2.insert(1)
         bst2.insert(2)
         bst2.insert(0)
 
         bst2.delete(0)
-        self.assertEqual(bst2.size(),2)
+        self.assertEqual(bst2.size(), 2)
         bst2.delete(2)
-        self.assertEqual(bst2.size(),1)
+        self.assertEqual(bst2.size(), 1)
         bst2.delete(1)
-        self.assertEqual(bst2.size(),0)
+        self.assertEqual(bst2.size(), 0)
 
         bst3.insert(2)
         bst3.insert(0)
         bst3.insert(1)
 
         bst3.delete(2)
-        self.assertEqual(bst3.size(),2)
+        self.assertEqual(bst3.size(), 2)
         bst3.delete(1)
-        self.assertEqual(bst3.size(),1)
+        self.assertEqual(bst3.size(), 1)
         bst3.delete(0)
-        self.assertEqual(bst3.size(),0)
+        self.assertEqual(bst3.size(), 0)
 
         bst4.insert(2)
         bst4.insert(1)
         bst4.insert(0)
 
         bst4.delete(2)
-        self.assertEqual(bst4.size(),2)
+        self.assertEqual(bst4.size(), 2)
         bst4.delete(0)
-        self.assertEqual(bst4.size(),1)
+        self.assertEqual(bst4.size(), 1)
         bst4.delete(1)
-        self.assertEqual(bst4.size(),0)
+        self.assertEqual(bst4.size(), 0)
 
         bst5.insert(0)
         bst5.insert(2)
         bst5.insert(1)
 
         bst5.delete(1)
-        self.assertEqual(bst5.size(),2)
+        self.assertEqual(bst5.size(), 2)
         bst5.delete(2)
-        self.assertEqual(bst5.size(),1)
+        self.assertEqual(bst5.size(), 1)
         bst5.delete(0)
-        self.assertEqual(bst5.size(),0)
+        self.assertEqual(bst5.size(), 0)
 
         bst6.insert(1)
         bst6.insert(0)
         bst6.insert(2)
 
         bst6.delete(0)
-        self.assertEqual(bst6.size(),2)
+        self.assertEqual(bst6.size(), 2)
         bst6.delete(1)
-        self.assertEqual(bst6.size(),1)
+        self.assertEqual(bst6.size(), 1)
         bst6.delete(2)
-        self.assertEqual(bst6.size(),0)
+        self.assertEqual(bst6.size(), 0)
 
     def test_delete_complex(self):
         for size in [1, 2, 3, 4, 7, 8, 15, 26, 100, 417, 5694]:

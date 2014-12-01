@@ -9,17 +9,17 @@
 # the data_structures needed are being COPIED into this file from
 # linked_list.py
 # doubly_linked_list.py
-#from ..dll.doubly_linked_list import DNode
+# from ..dll.doubly_linked_list import DNode
 
 from Queue import Queue
 import random
+
 
 # BEGIN linked_list.py
 class Node():
     def __init__(self, val, link=None):
         self.val = val
         self.link = link
-
 
 
 # END linked_list.py
@@ -32,10 +32,12 @@ class DNode(Node):
 
 # END doubly_linked_list.py
 
+
 class BNode(DNode):
     @property
     def left(self):
         return self.link
+
     @left.setter
     def left(self, value):
         self.link = value
@@ -43,6 +45,7 @@ class BNode(DNode):
     @property
     def right(self):
         return self.link2
+
     @right.setter
     def right(self, value):
         self.link2 = value
@@ -78,6 +81,7 @@ class BNode(DNode):
             r = random.randint(0, 1e9)
             yield "\tnull%s [shape=point];" % r
             yield "\t%s -> null%s;" % (self.val, r)
+
 
 class BinarySearchTree():
     def __init__(self):
@@ -121,8 +125,6 @@ class BinarySearchTree():
 
         self.nodeCount += 1
         return
-
-
 
     def contains(self, val):
         if self.head is None:
@@ -238,7 +240,7 @@ class BinarySearchTree():
             if parent.right == current:
                 parent.right = current.right
                 if ((current.left is not None) and
-                    (parent.right.left is not None)):
+                   (parent.right.left is not None)):
                     # collision! parent.right.left and current.left
                     parent.right.left = self._merge(parent.right,
                                                     current.left,
@@ -247,7 +249,7 @@ class BinarySearchTree():
                 # parent left == current
                 parent.left = current.right
                 if ((current.left is not None) and
-                    (parent.left.left is not None)):
+                   (parent.left.left is not None)):
                     # collision! parent.left.left and current.left
                     parent.left.left = self._merge(parent.left,
                                                    current.left,
@@ -257,7 +259,7 @@ class BinarySearchTree():
             if parent.right == current:
                 parent.right = current.left
                 if ((current.right is not None) and
-                    (parent.right.right is not None)):
+                   (parent.right.right is not None)):
                     # collision! parent.right.right and current.right
                     parent.right.right = self._merge(parent.right,
                                                      parent.right.right,
@@ -266,7 +268,7 @@ class BinarySearchTree():
                 # parent.left == current
                 parent.left = current.left
                 if ((current.right is not None) and
-                    (parent.left.right is not None)):
+                   (parent.left.right is not None)):
                     # collision! parent.left.right and current.right
                     parent.left.right = self._merge(parent.left,
                                                     parent.left.right,
@@ -315,5 +317,3 @@ class BinarySearchTree():
                 q1.put(dnode.left)
             if dnode.right is not None:
                 q1.put(dnode.right)
-
-
