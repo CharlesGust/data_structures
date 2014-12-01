@@ -61,7 +61,7 @@ def time_one(count, elementtext, xrangetext):
 
 if __name__=="__main__":
 
-    for x in [2, 5, 10]:
+    for x in [1, 2, 5, 10]:
         time_one(x, 'i', '0,{0}'.format(x))
         time_one(x, 'i', '{0},0,-1'.format(x))
         time_one(x, 'random.randrange(0,{0})'.format(x), '0,{0}'.format(x))
