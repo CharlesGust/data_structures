@@ -26,16 +26,23 @@ def sort(unsorted):
     for n in xrange(1, len(unsorted)):
         # pick the nth element, and if it's value is less than any of the
         #  (already sorted) values in front of it, move it to the front
-        for test_index in xrange(n, 1, -1):
-            if unsorted[test_index] < unsorted[test_index-1]:
-                val = unsorted[test_index-1]
-                unsorted[test_index] = unsorted[test_index-1]
-                unsorted[test_index-1] = val
-            else:
-                break
+        val = unsorted[n]
+        test_index = n - 1
+        while (test_index >= 0) and (unsorted[test_index] > val):
+            unsorted[test_index+1] = unsorted[test_index]
+            test_index -= 1
+        unsorted[test_index+1] = val
 
     # unsorted array is now sorted (was done in place with swaps)
     return unsorted
 
 if __name__=="__main__":
-    print timeit.timeit(sort([i for i in xrange(10000, 0, -1)]))
+
+    print "Insertion sort of 10 inorder elements ({} seconds)".format(
+        timeit.timeit('arr = [i for i in xrange(0,10)]; sort(arr)',
+        setup='from __main__ import sort'))
+
+    print "Insertion sort on 10 reversed elements ({} seconds)".format(
+        timeit.timeit('arr=[i for i in xrange(10, 0, -1)]; sort(arr)',
+        setup='from __main__ import sort'))
+
