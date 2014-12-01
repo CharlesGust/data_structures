@@ -10,6 +10,12 @@ On the hashtable implementation, Ben Friedland helped convince me to use native 
 lists instead of the "Bucket" object I had created that I thought was a requirement of
 the specification. The resulting code is a lot cleaner as a result.
 
+General resources consulted include the Python Documentation and Wikipedia.
+
+Ben Friedland also suggested reading about Quicksort at:
+http://en.literateprograms.org/Quicksort_%28Python%29#Using_list_comprehensions
+which was a very useful resource.
+
 ##Resources
 In general, I referenced the Python 2.x docs and Stack Overflow for many questions, particularly
 around package, module importing in sibling directories. Unfortunately, I don't know where
