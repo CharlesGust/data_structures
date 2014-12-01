@@ -2,6 +2,22 @@
 #===============
 This repository holds sample code for a number of classic data structures implemented in Python
 
+##Usage
+
+####Linked List
+
+####Doubly Linked List
+
+####Insertion Sort
+
+####Merge Sort
+
+####Quick Sort
+
+####Radix Sort
+radix_sort.sorti():   sorts a list of integers
+radix_sort.sorts():   sorts a list of strings
+
 ##Continuous Integration Status
 [![Build Status](https://travis-ci.org/CharlesGust/data_structures.svg?branch=master)](https://travis-ci.org/CharlesGust/data_structures)
 
