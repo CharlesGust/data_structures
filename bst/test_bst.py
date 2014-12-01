@@ -408,59 +408,59 @@ class BinarySearchTreeTestCases(unittest.TestCase):
         self.assertEqual(bst1.depth(), 100)
         self.assertEqual(bst2.depth(), 100)
 
-    # def test_perfect_insert(self):
-    #     def insert_mids(tree, span):
-    #         mid = int(span/2)
-    #         if mid == 0:
-    #             return
-    #         else:
-    #             tree.insert(mid)
-    #             insert_mids(tree, mid + (mid/2))
-    #             insert_mids(tree, mid/2)
+    def test_perfect_insert(self):
+        def insert_mids(tree, start, end):
+            mid = start + int((end-start)//2)
+            if (mid == start) or (mid == end):
+                return
+            else:
+                tree.insert(mid)
+                insert_mids(tree, start, mid)
+                insert_mids(tree, mid, end)
 
-    #     bst2 = BinarySearchTree()
-    #     insert_mids(bst2, 4)
-    #     self.assertEqual(bst2.depth(), 2)
+        bst2 = BinarySearchTree()
+        insert_mids(bst2, 0, 4)
+        self.assertEqual(bst2.depth(), 2)
 
-    #     bst4 = BinarySearchTree()
-    #     insert_mids(bst4, 16)
-    #     self.assertEqual(bst4.depth(), 4)
+        bst4 = BinarySearchTree()
+        insert_mids(bst4, 0, 16)
+        self.assertEqual(bst4.depth(), 4)
 
-    #     bst6 = BinarySearchTree()
-    #     insert_mids(bst6, 64)
-    #     #self.assertEqual(bst6.depth(), 6)
+        bst6 = BinarySearchTree()
+        insert_mids(bst6, 0, 64)
+        self.assertEqual(bst6.depth(), 6)
 
-    #     bst8 = BinarySearchTree()
-    #     insert_mids(bst8, 256)
-    #     #self.assertEqual(bst8.depth(), 8)
+        bst8 = BinarySearchTree()
+        insert_mids(bst8, 0, 256)
+        self.assertEqual(bst8.depth(), 8)
 
-    #     bst10 = BinarySearchTree()
-    #     insert_mids(bst10, 1024)
-    #     #self.assertEqual(bst10.depth(), 10)
+        bst10 = BinarySearchTree()
+        insert_mids(bst10, 0, 1024)
+        self.assertEqual(bst10.depth(), 10)
 
-    #     for i in xrange(4):
-    #         bst2.delete(i)
+        for i in xrange(4):
+            bst2.delete(i)
 
-    #     for i in xrange(64):
-    #         bst6.delete(i)
+        for i in xrange(64):
+            bst6.delete(i)
 
-    #     for i in xrange(256):
-    #         bst8.delete(i)
+        for i in xrange(256):
+            bst8.delete(i)
 
-    #     for i in xrange(1024):
-    #         bst10.delete(i)
+        for i in xrange(1024):
+            bst10.delete(i)
 
-    #     self.assertEqual(bst2.size(), 0)
-    #     self.assertEqual(bst2.depth(), 0)
+        self.assertEqual(bst2.size(), 0)
+        self.assertEqual(bst2.depth(), 0)
 
-    #     self.assertEqual(bst6.size(), 0)
-    #     self.assertEqual(bst6.depth(), 0)
+        self.assertEqual(bst6.size(), 0)
+        self.assertEqual(bst6.depth(), 0)
 
-    #     self.assertEqual(bst8.size(), 0)
-    #     self.assertEqual(bst8.depth(), 0)
+        self.assertEqual(bst8.size(), 0)
+        self.assertEqual(bst8.depth(), 0)
 
-    #     self.assertEqual(bst10.size(), 0)
-    #     self.assertEqual(bst10.depth(), 0)
+        self.assertEqual(bst10.size(), 0)
+        self.assertEqual(bst10.depth(), 0)
 
     # def test_inorder(self):
     #     bst1 = BinarySearchTree()
